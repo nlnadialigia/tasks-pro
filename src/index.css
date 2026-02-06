@@ -1,0 +1,260 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+/* Task Manager Design System - Slate Palette */
+
+@layer base {
+  :root {
+    /* Slate-based color system */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 215 25% 27%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 214 32% 91%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 214 32% 91%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
+
+    --info: 199 89% 48%;
+    --info-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 215 25% 27%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 214 32% 91%;
+    --sidebar-primary: 210 40% 98%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 215 25% 20%;
+    --sidebar-accent-foreground: 214 32% 91%;
+    --sidebar-border: 215 25% 20%;
+    --sidebar-ring: 215 25% 27%;
+
+    /* Task status colors */
+    --status-todo: 215 16% 47%;
+    --status-in-progress: 199 89% 48%;
+    --status-review: 38 92% 50%;
+    --status-done: 142 76% 36%;
+
+    /* Priority colors */
+    --priority-low: 215 16% 47%;
+    --priority-medium: 38 92% 50%;
+    --priority-high: 25 95% 53%;
+    --priority-urgent: 0 84% 60%;
+
+    /* Role badges */
+    --role-owner: 262 83% 58%;
+    --role-editor: 199 89% 48%;
+    --role-viewer: 215 16% 47%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 215 25% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 215 25% 15%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 215 25% 20%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 25% 20%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 215 25% 20%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
+
+    --info: 199 89% 48%;
+    --info-foreground: 210 40% 98%;
+
+    --border: 215 25% 20%;
+    --input: 215 25% 20%;
+    --ring: 214 32% 91%;
+
+    --sidebar-background: 222 55% 8%;
+    --sidebar-foreground: 214 32% 91%;
+    --sidebar-primary: 210 40% 98%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 215 25% 15%;
+    --sidebar-accent-foreground: 214 32% 91%;
+    --sidebar-border: 215 25% 15%;
+    --sidebar-ring: 214 32% 91%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+
+  /* Status badges */
+  .status-todo {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .status-in-progress {
+    background-color: hsl(var(--status-in-progress) / 0.1);
+    color: hsl(var(--status-in-progress));
+  }
+
+  .status-review {
+    background-color: hsl(var(--status-review) / 0.1);
+    color: hsl(var(--status-review));
+  }
+
+  .status-done {
+    background-color: hsl(var(--status-done) / 0.1);
+    color: hsl(var(--status-done));
+  }
+
+  /* Priority indicators */
+  .priority-low {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .priority-medium {
+    background-color: hsl(var(--priority-medium) / 0.1);
+    color: hsl(var(--priority-medium));
+  }
+
+  .priority-high {
+    background-color: hsl(var(--priority-high) / 0.1);
+    color: hsl(var(--priority-high));
+  }
+
+  .priority-urgent {
+    background-color: hsl(var(--priority-urgent) / 0.1);
+    color: hsl(var(--priority-urgent));
+  }
+
+  /* Role badges */
+  .role-owner {
+    background-color: hsl(var(--role-owner) / 0.1);
+    color: hsl(var(--role-owner));
+  }
+
+  .role-editor {
+    background-color: hsl(var(--role-editor) / 0.1);
+    color: hsl(var(--role-editor));
+  }
+
+  .role-viewer {
+    background-color: hsl(var(--role-viewer) / 0.1);
+    color: hsl(var(--role-viewer));
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-card/80 backdrop-blur-md border border-border/50;
+  }
+
+  /* Subtle shadow */
+  .shadow-subtle {
+    box-shadow: 0 1px 2px 0 hsl(var(--foreground) / 0.05),
+      0 1px 3px 0 hsl(var(--foreground) / 0.1);
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-md hover:border-primary/20;
+  }
+}
+
+/* AG Grid Custom Theme */
+.ag-theme-custom {
+  --ag-background-color: hsl(var(--card));
+  --ag-foreground-color: hsl(var(--foreground));
+  --ag-header-background-color: hsl(var(--muted));
+  --ag-header-foreground-color: hsl(var(--foreground));
+  --ag-odd-row-background-color: hsl(var(--background));
+  --ag-row-hover-color: hsl(var(--accent));
+  --ag-selected-row-background-color: hsl(var(--primary) / 0.1);
+  --ag-border-color: hsl(var(--border));
+  --ag-secondary-border-color: hsl(var(--border));
+  --ag-row-border-color: hsl(var(--border));
+  --ag-header-cell-hover-background-color: hsl(var(--accent));
+  --ag-range-selection-border-color: hsl(var(--primary));
+  --ag-input-focus-border-color: hsl(var(--ring));
+  --ag-checkbox-checked-color: hsl(var(--primary));
+  --ag-checkbox-unchecked-color: hsl(var(--muted-foreground));
+  --ag-font-family: inherit;
+  --ag-font-size: 14px;
+  --ag-grid-size: 6px;
+  --ag-row-height: 48px;
+  --ag-header-height: 48px;
+}
+
+.ag-theme-custom .ag-header-cell-label {
+  font-weight: 500;
+}
+
+.ag-theme-custom .ag-cell {
+  display: flex;
+  align-items: center;
+}
